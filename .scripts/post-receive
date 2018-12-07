@@ -1,0 +1,20 @@
+#!/bin/bash
+
+APP_NAME = $(grep APP_NAME .env | cut -d '=' -f2)
+PORT = $(grep PROD_PORT .env | cut -d '=' -f2)
+
+echo 'post-receive: Triggered.'
+cd /opt/live/$APP_NAME
+
+echo 'post-receive: git check out'
+git --git-dir=/opt/$APP_NAME.git --work-tree=/opt/live/$APP_NAME checkout master -f
+
+echo 'post-receive: npm install'
+npm install
+
+echo 'post-receive: building...'
+PORT=$PORT npm run build
+
+echo 'post-receive: starting pm2.' 
+pm2 delete $APP_NAME
+pm2 start npm --name $APP_NAME -- start
