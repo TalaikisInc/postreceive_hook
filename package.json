@@ -9,7 +9,7 @@
     "loadtest": "artillery run loadtest.yml",
     "metrics": "lighthouse http://localhost:3000/",
     "scan": "snyk monitor",
-    "deploy": "git push live master"
+    "deploy": "git push production master"
   },
   "repository": {
     "type": "git",

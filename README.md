@@ -15,14 +15,14 @@ Initial example:
 3. Then:
 
 ```bash
-scp -r ./.scripts root@173.212.207.88:/root/
+cp -r ./.scripts root@123.123.123.123:/root/
 # For subsequent projects, only new .env is needeed
-scp ./.env root@173.212.207.88:/root/.scripts
-ssh root@173.212.207.88 "chmod +x /root/.scripts/pre_remote.sh"
+cp ./.env root@123.123.123.123:/root/.scripts
+ssh root@123.123.123.123 "chmod +x /root/.scripts/pre_remote.sh"
 # Verify permissions (optional):
-ssh root@173.212.207.88 "ls -la /root/.scripts"
+ssh root@123.123.123.123 "ls -la /root/.scripts"
 # Install remote repo:
-ssh root@173.212.207.88 "bash -s" < ./.scripts/pre_remote.sh
+ssh root@123.123.123.123 "bash /root/.scripts/pre_remote.sh"
 # Add remote git repo:
 chmod +x pre_local.sh
 ./pre_local.sh

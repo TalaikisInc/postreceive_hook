@@ -1,8 +1,9 @@
 #!/bin/bash
 
-APP_NAME = $(grep APP_NAME .env | cut -d '=' -f2)
+cd /opt && \
+  git init --bare identiform.git && \
+  git clone identiform.git identiform
 
-git init --bare /opt/$APP_NAME.git
-git clone /opt/$APP_NAME.git /opt/live/$APP_NAME
-cp post-receive /opt/$APP_NAME.git/hooks
-chmod ug+x /opt/$APP_NAME.git/hooks/post-receive
+cp /root/.scripts/post-receive /opt/identiform.git/hooks
+chmod ug+x /opt/identiform.git/hooks/post-receive
+cp /root/.scripts/.env /opt/identiform
