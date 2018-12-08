@@ -11,19 +11,10 @@
 Initial example:
 
 1. Configure passwordless ssh login to remote server.
-2. Edit .env with approppriate variables.
+2. Edit .env and ./.scripts.
 3. Then:
 
 ```bash
-cp -r ./.scripts root@123.123.123.123:/root/
-# For subsequent projects, only new .env is needeed
-cp ./.env root@123.123.123.123:/root/.scripts
-ssh root@123.123.123.123 "chmod +x /root/.scripts/pre_remote.sh"
-# Verify permissions (optional):
-ssh root@123.123.123.123 "ls -la /root/.scripts"
-# Install remote repo:
-ssh root@123.123.123.123 "bash /root/.scripts/pre_remote.sh"
-# Add remote git repo:
 chmod +x pre_local.sh
 ./pre_local.sh
 ```
