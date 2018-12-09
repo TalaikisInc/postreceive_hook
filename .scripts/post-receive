@@ -20,8 +20,5 @@ echo 'Building...'
 PORT=$PORT npm run build
 
 echo 'Starting server.' 
-if [ "$(pm2 id $APP_NAME) "= "[]" ]; then
-  pm2 start ./index.js --name "$APP_NAME" -i max
-else
-  pm2 reload "$APP_NAME"
-fi
+PORT=$PORT pm2 reload "$APP_NAME"
+PORT=$PORT pm2 start ./index.js --name "$APP_NAME"
